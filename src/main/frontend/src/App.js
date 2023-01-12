@@ -1,26 +1,43 @@
 
 import './styles/App.css';
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
+import {
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
 import TopicMenu from './components/TopicMenu';
+import ReadPage from './components/ReadPage'
+import ErrorPage from './components/ErrorPage';
 
 import { Layout } from 'antd';
+import RouterTestComponent from './components/RouterTestComponent';
 const { Header, Content, Sider } = Layout;
+
 
 
 function App() {
  
-  const topics = ["Odczyt", "Second topic", "Third topic"];
+  const topics = ["Odczyt", "Test"];
  
   const [selectedKey, setSelectedKey] = useState("0");
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
+  const navigate = useNavigate()
+
+
+  const routes = topics.map(
+    element => element==='Odczyt' ? '' : element
+  )
+
   const selectMenuItem = (event) => {
     const key = event.key;
     setSelectedKey(key);
     setDrawerOpen(false);
+
+    navigate(`/${routes[key]}`)
   };
   const Menu = (
     <TopicMenu
@@ -35,7 +52,7 @@ function App() {
       <Layout>
         <SideBar menu={Menu} />
         <Content className="content">
-          
+          <Outlet/>
         </Content>
       </Layout>
     </div>
