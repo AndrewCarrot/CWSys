@@ -6,8 +6,12 @@ const { Search } = Input;
 const ReadPage = () => {
     const navigate = useNavigate();
 
-    const onSearch = () => {
-        
+    const onSearch = (value) => {
+        navigate("/Climber", {
+            state:{
+                cardNumber: value
+            }
+        })
     }
 
     return (

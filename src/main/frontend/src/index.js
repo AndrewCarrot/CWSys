@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import RouterTestComponent from './components/RouterTestComponent';
 import ReadPage from './components/ReadPage';
+import ClimberProfileComponent from './components/ClimberProfileComponent';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/Test",
         element: <RouterTestComponent/>
+      },
+      {
+        path: "/Climber",
+        element: <ClimberProfileComponent/>
       }
     ]
   }
