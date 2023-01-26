@@ -1,5 +1,6 @@
 import React from "react";
 import {Menu} from "antd";
+
 const TopicMenu = ({ topics, selectedKey,  selectMenuItem }) => {
   const styledTopics = [];
   topics.forEach((topic, index) =>
@@ -13,7 +14,7 @@ const TopicMenu = ({ topics, selectedKey,  selectMenuItem }) => {
   );
   
   return (
-    <Menu items={styledTopics} mode="inline" selectedKeys={[selectedKey]} />
+    <Menu  items={styledTopics} mode="inline" selectedKeys={[selectedKey]} />
   );
 }
 export default TopicMenu;

@@ -1,0 +1,24 @@
+.ClimberProfileComponent{
+    background-color:rgb(255, 255, 255);
+    width: 90%;
+    /* height: 30%; */
+    border-radius: 20px;
+    align-items: center;
+    align-content: center;
+    margin-left: -15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    padding: 10px;
+}
+
+@media (min-width: 700px){
+    .ClimberProfileComponent{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

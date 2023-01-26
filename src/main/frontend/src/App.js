@@ -3,7 +3,7 @@ import './styles/App.css';
 import React, {useEffect, useState} from "react"
 import {
   Outlet,
-  useNavigate,
+  useNavigate
 } from "react-router-dom";
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
@@ -12,6 +12,11 @@ import ReadPage from './components/ReadPage'
 import ErrorPage from './components/ErrorPage';
 
 import { Layout } from 'antd';
+import {
+  SearchOutlined,
+  CreditCardOutlined,
+  UserOutlined
+} from '@ant-design/icons';
 import RouterTestComponent from './components/RouterTestComponent';
 const { Header, Content, Sider } = Layout;
 
@@ -19,7 +24,11 @@ const { Header, Content, Sider } = Layout;
 
 function App() {
  
-  const topics = ["Odczyt", "Test"];
+  const topics = [
+    [<SearchOutlined />, " Odczyt"],
+    [<CreditCardOutlined/>, " Sekcje"],
+    [<UserOutlined />, " Klienci"]
+  ];
  
   const [selectedKey, setSelectedKey] = useState("0");
 
@@ -29,7 +38,7 @@ function App() {
 
 
   const routes = topics.map(
-    element => element==='Odczyt' ? '' : element
+    element => element[1].trim()==='Odczyt' ? '' : element[1].trim()
   )
 
   const selectMenuItem = (event) => {

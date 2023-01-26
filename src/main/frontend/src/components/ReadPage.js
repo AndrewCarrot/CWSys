@@ -7,11 +7,23 @@ const ReadPage = () => {
     const navigate = useNavigate();
 
     const onSearch = (value) => {
-        navigate("/Climber", {
-            state:{
-                cardNumber: value
-            }
-        })
+        fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${value}`)
+        .then(async response =>{
+            const data = await response.json();
+            
+            if (!response.ok) {
+                console.log('zły numer karty')
+            }else
+            navigate("/Profil", {
+                state:{
+                    climber: data
+                }
+            })
+
+    })
+
+
+        
     }
 
     return (

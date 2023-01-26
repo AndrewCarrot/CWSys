@@ -23,12 +23,16 @@ const router = createBrowserRouter([
         element: <ReadPage/>
       },
       {
-        path: "/Test",
+        path: "/Sekcje",
         element: <RouterTestComponent/>
       },
       {
-        path: "/Climber",
+        path: "/Profil",
         element: <ClimberProfileComponent/>
+      },
+      {
+        path: "/Klienci",
+        element: <RouterTestComponent/>
       }
     ]
   }

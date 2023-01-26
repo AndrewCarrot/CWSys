@@ -16,7 +16,7 @@ const NavBar = ({ menu, drawerOpen, setDrawerOpen }) => {
         onClick={() => setDrawerOpen(true)}
       />
       <Drawer
-        title="Topics"
+        title="Menu"
         placement="left"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
