@@ -1,5 +1,6 @@
 .content{
-    padding: 35px 15px 15px;
+    /* padding: 35px 15px 15px; */
+    padding-top: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,4 +8,18 @@
 
 .content > .ReadPage{
     align-self: flex-start;
+}
+
+
+/* All tables */
+.ant-table-thead> tr > th{
+    color: white;
+    font-size: 15px;
+    font-weight: bold !important;
+    background: #83abe0 !important;
+    text-align: center !important;
+}
+
+.ant-table-tbody > tr > td {
+    text-align: center !important;
 }

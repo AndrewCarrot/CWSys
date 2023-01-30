@@ -25,9 +25,9 @@ const { Header, Content, Sider } = Layout;
 function App() {
  
   const topics = [
-    [<SearchOutlined />, " Odczyt"],
-    [<CreditCardOutlined/>, " Sekcje"],
-    [<UserOutlined />, " Klienci"]
+    [<SearchOutlined key={0}/>, " Odczyt"],
+    [<CreditCardOutlined key={1}/>, " Sekcje"],
+    [<UserOutlined key={2}/>, " Klienci"]
   ];
  
   const [selectedKey, setSelectedKey] = useState("0");
@@ -40,6 +40,8 @@ function App() {
   const routes = topics.map(
     element => element[1].trim()==='Odczyt' ? '' : element[1].trim()
   )
+
+ 
 
   const selectMenuItem = (event) => {
     const key = event.key;

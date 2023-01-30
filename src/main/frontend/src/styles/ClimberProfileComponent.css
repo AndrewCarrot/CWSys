@@ -1,24 +1,58 @@
 .ClimberProfileComponent{
-    background-color:rgb(255, 255, 255);
-    width: 90%;
-    /* height: 30%; */
-    border-radius: 20px;
-    align-items: center;
-    align-content: center;
-    margin-left: -15px;
-
+    width: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+}
+
+.top-badge{
+    background-color:rgb(255, 255, 255);
+    width: 90%;
+    border-radius: 20px;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     padding: 10px;
 }
 
+.alert{
+    display: none;
+}
+
+.passes{
+    width: 90%;
+}
+
+.pass-badge{
+    margin-left: 10px;
+}
+
+
+.pass-tables{
+    margin-top: 20px;
+}
+
+/* tablet */
 @media (min-width: 700px){
-    .ClimberProfileComponent{
+    .top-badge{
         flex-direction: row;
         justify-content: space-around;
     }
+    
+    .alert{
+        display: block;
+        margin-top: 10px;
+        width: 89%;
+        border-radius: 20px;
+    }
+}
+
+/* wide screen */
+@media (min-width: 992px){
+
 }

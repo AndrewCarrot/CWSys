@@ -6,6 +6,7 @@ const { Search } = Input;
 const ReadPage = () => {
     const navigate = useNavigate();
 
+    // fajnie jakby tutaj tylko sprawdzać czy numer karty prowadzi do wspinacza ale nie ma takiego endpointu
     const onSearch = (value) => {
         fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${value}`)
         .then(async response =>{
@@ -16,7 +17,7 @@ const ReadPage = () => {
             }else
             navigate("/Profil", {
                 state:{
-                    climber: data
+                    cardNumber: value
                 }
             })
 
