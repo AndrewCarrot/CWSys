@@ -35,12 +35,34 @@ const ClassPassComponent = (props) => {
     const daysLeft = Math.ceil((validTill.getTime()-validFrom.getTime()))/ (1000 * 3600 * 24)
 
 
-    const handleAddPunch = () => {
-
+    const handleAddPunch = async() => {
+        const response = await fetch(`http://localhost:8080/classPass/${props.climberId}/givePunch`, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+            if(response.ok){
+                props.handleReload()
+                message.success("Pomyślnie dodano wejście na sekcje !")
+            }else{
+                message.error("Coś poszło nie tak")
+            }
     }
 
-    const handleTakePunch = () => {
-
+    const handleTakePunch = async() => {
+        const response = await fetch(`http://localhost:8080/classPass/${props.climberId}/takePunch`, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+            if(response.ok){
+                props.handleReload()
+                message.success("Pomyślnie zdjęto wejście z karnetu !")
+            }else{
+                message.error("Coś poszło nie tak")
+            }
     }
 
     const handleDelete = async() => {
@@ -58,20 +80,52 @@ const ClassPassComponent = (props) => {
         }
     }
 
-    const handleInputChange = () => {
-
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
     }
 
     const handleModalClose = () => {
-
+        setIsModalOpen(false)
+        setInputValue(null)
     }
 
-    const handleModalConfirm = () => {
+    /* Wydłużenie ważności karnetu */
+    const handleModalConfirm = async() => {
+        if(inputValue !== null) {
+            const res = await fetch(`http://localhost:8080/classPass/${props.climberId}/addDays?days=${inputValue}`, {
+                method: 'PATCH',
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
 
+            if (res.ok) {
+                message.success("Pomyślnie wydłużono czas trwania karnetu!")
+                handleModalClose()
+                props.handleReload()
+            }else{
+                message("Coś poszło nie tak")
+            }
+        }else{
+            message.error("Określ ilość dni")
+        }
     }
 
-    const handlePassRenew = () => {
+    const handlePassRenew = async() => {
+        const res = await fetch(`http://localhost:8080/classPass/${props.climberId}/renew`,{
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json'
+            }
+        });
 
+        if(res.ok){
+            message.success("Pomyślne odnowiono karnet!")
+            handleModalClose()
+            props.handleReload()
+        }else{
+            message.error("Coś poszło nie tak")
+        }
     }
 
 

@@ -1,3 +1,7 @@
 .AddClassPassComponent > Button{
     width: 100%;
 }
+
+.modal{
+    height: 32px;
+}

@@ -45,19 +45,51 @@ const TimePassComponent = (props) => {
     }
 
     const handleModalClose = () => {
-
+        setIsModalOpen(false)
+        setInputValue(null)
     }
 
-    const handlePassRenew = () => {
+    const handlePassRenew = async() => {
+        const res = await fetch(`http://localhost:8080/timePass/${props.climberId}/renew`,{
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json'
+            }
+        });
 
+        if(res.ok){
+            message.success("Pomyślnie odnowiono karnet!")
+            handleModalClose()
+            props.handleReload()
+        }
     }
 
-    const handleModalConfirm = () => {
+    /* Wydłużenie ważności karnetu */ 
+    const handleModalConfirm = async() => {
 
+        if(inputValue !== null) {
+            const res = await fetch(`http://localhost:8080/timePass/${props.climberId}/addDays?days=${inputValue}`, {
+                method: 'PATCH',
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            if (res.ok) {
+                message.success("Pomyślnie wydłużono czas trwania karnetu!")
+                handleModalClose()
+                props.handleReload()
+            }else{
+                message.error("Coś poszło nie tak")
+            }
+        }else{
+            message.error("Określ ilość dni")
+        }
+        
     }
 
-    const handleInputChange = () => {
-
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
     }
 
     const dataSource = [
@@ -155,6 +187,7 @@ const TimePassComponent = (props) => {
                         Przedłuż
                     </Button>
                 ]}
+                
             >
                 <Input
                     placeholder="wydłużenie dni"

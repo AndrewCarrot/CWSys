@@ -1,3 +1,7 @@
 .AddTimePassComponent > Button {
     width: 100%;
 }
+
+.modal .ant-modal-content .ant-modal-body{
+    height: 32px;
+}
