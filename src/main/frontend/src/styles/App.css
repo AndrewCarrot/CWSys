@@ -18,8 +18,11 @@
     font-weight: bold !important;
     background: #83abe0 !important;
     text-align: center !important;
+
+
 }
 
 .ant-table-tbody > tr > td {
     text-align: center !important;
+  
 }

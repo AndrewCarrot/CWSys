@@ -3,7 +3,7 @@ import { Button } from 'antd'
 
 const AddTimePassComponent = () => {
     return (
-        <div className="addTimePassComponent">
+        <div className="AddTimePassComponent">
             <Button
                 type="primary"
             >

@@ -1,4 +1,4 @@
-import '../styles/PunchPassComponent.css'
+
 
 import {message, Popconfirm, Space, Table} from "antd";
 import {MinusCircleFilled, MinusSquareTwoTone, PlusSquareTwoTone, QuestionCircleOutlined} from "@ant-design/icons";
@@ -18,7 +18,7 @@ const PunchPassComponent = (props) => {
     if (!response.ok) {
       message.error("błąd serwera")
     } else {
-      message.success("Pomyślnie zdjęto wejście z karnetu !")
+      message.success("Pomyślnie dodano wejście na karnet !")
       props.handleReload()
     }
 
@@ -116,7 +116,14 @@ const handleDelete = async() => {
 
     return(
         <div className="PunchPassComponent">
-            <Table  dataSource={dataSource} columns={columns} pagination={false} />
+            <Table 
+              dataSource={dataSource}
+              columns={columns} 
+              pagination={false} 
+              scroll={{
+                x: 500,
+              }}
+            />
         </div>
     )
 }

@@ -2,15 +2,18 @@ import { Modal, Button, Input, Alert } from "antd"
 import {
     ContactsTwoTone,
     PhoneTwoTone,
-    CreditCardTwoTone
+    CreditCardTwoTone,
+    PropertySafetyFilled
 } from '@ant-design/icons';
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import '../styles/ClimberProfileComponent.css'
 import PunchPassComponent from "./PunchPassComponent.js";
+import TimePassComponent from "./TimePassComponent.js"
 import AddPunchPassComponent from "./AddPunchPassComponent";
 import AddClassPassComponent from "./AddClassPassComponent";
 import AddTimePassComponent from './AddTimePassComponent'
+import ClassPassComponent from "./ClassPassComponent";
 
 const ClimberProfileComponent = () => {
 
@@ -85,20 +88,22 @@ const ClimberProfileComponent = () => {
             </div>
 
             <div className="alert">
-                {climber.note.trim().length > 0 && <Alert message={climber.note} type="info" showIcon />}
+                {climber.note && climber.note.trim().length > 0 && <Alert message={climber.note} type="info" showIcon />}
             </div>
 
             <div className="passes">
                 <p className="pass-badge">Karnety:</p>
                 <div className="buttons">
                     
-                    <AddPunchPassComponent/>
-                    <AddTimePassComponent/>
-                    <AddClassPassComponent/>
+                    <AddPunchPassComponent climberId={climber.id} handleReload={handleReload}/>
+                    <AddTimePassComponent climberId={climber.id} handleReload={handleReload}/>
+                    <AddClassPassComponent climberId={climber.id} handleReload={handleReload}/>
                    
                 </div>
                 <div className="pass-tables">
                     { climber.punchPass && <PunchPassComponent pass={climber.punchPass} climberId={climber.id} handleReload={handleReload}/>}
+                    { climber.timePass && <TimePassComponent pass={climber.timePass} climberId={climber.id} handleReload={handleReload} /> }
+                    { climber.classPass && <ClassPassComponent pass={climber.classPass} climberId={climber.id} handleReload={handleReload} /> }
                 </div>
             </div>
 
