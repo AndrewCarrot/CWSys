@@ -231,6 +231,7 @@ const ClassPassComponent = (props) => {
                 onCancel={handleModalClose}
                 footer={[
                     <Button
+                        key={"renew"}
                         type={"primary"}
                         style={{backgroundColor:"green", float:"left"}}
                         onClick={handlePassRenew}
@@ -238,6 +239,7 @@ const ClassPassComponent = (props) => {
                         Odnów karnet
                     </Button>,
                     <Button
+                        key={"extend"}
                         type={"primary"}
                         onClick={handleModalConfirm}
                     >

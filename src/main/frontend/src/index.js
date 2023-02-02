@@ -10,7 +10,8 @@ import {
 import RouterTestComponent from './components/RouterTestComponent';
 import ReadPage from './components/ReadPage';
 import ClimberProfileComponent from './components/ClimberProfileComponent';
-
+import NewClimberComponent from './components/NewClimberComponent'
+import AllClimbersComponent from './components/AllClimbersComponent'
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,15 @@ const router = createBrowserRouter([
         element: <ClimberProfileComponent/>
       },
       {
-        path: "/Klienci",
+        path: "/Nowy",
+        element: <NewClimberComponent/>
+      },
+      {
+        path: "/Lista",
+        element: <AllClimbersComponent/>
+      },
+      {
+        path: "/Edycja",
         element: <RouterTestComponent/>
       }
     ]

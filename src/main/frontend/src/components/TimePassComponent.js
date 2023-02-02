@@ -174,6 +174,7 @@ const TimePassComponent = (props) => {
                 onCancel={handleModalClose}
                 footer={[
                     <Button
+                        key={"renew"}
                         type={"primary"}
                         style={{backgroundColor:"green", float:"left"}}
                         onClick={handlePassRenew}
@@ -181,6 +182,7 @@ const TimePassComponent = (props) => {
                         Odnów karnet
                     </Button>,
                     <Button
+                        key={"extend"}
                         type={"primary"}
                         onClick={handleModalConfirm}
                     >

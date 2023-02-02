@@ -15,7 +15,9 @@ import { Layout } from 'antd';
 import {
   SearchOutlined,
   CreditCardOutlined,
-  UserOutlined
+  UserOutlined,
+  UnorderedListOutlined,
+  EditOutlined
 } from '@ant-design/icons';
 import RouterTestComponent from './components/RouterTestComponent';
 const { Header, Content, Sider } = Layout;
@@ -27,7 +29,9 @@ function App() {
   const topics = [
     [<SearchOutlined key={0}/>, " Odczyt"],
     [<CreditCardOutlined key={1}/>, " Sekcje"],
-    [<UserOutlined key={2}/>, " Klienci"]
+    [<EditOutlined key={2}/>, " Edycja", " sekcji"],
+    [<UserOutlined key={3}/>, " Nowy", " klient"],
+    [<UnorderedListOutlined key={4}/>, " Lista", " klientów"]
   ];
  
   const [selectedKey, setSelectedKey] = useState("0");
