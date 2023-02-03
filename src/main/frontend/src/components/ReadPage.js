@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 import "../styles/ReadPage.css"
 const { Search } = Input;
 
@@ -13,7 +13,7 @@ const ReadPage = () => {
             const data = await response.json();
             
             if (!response.ok) {
-                console.log('zły numer karty')
+                message.error("Podana karta nie istnieje w systemie")
             }else
             navigate("/Profil", {
                 state:{

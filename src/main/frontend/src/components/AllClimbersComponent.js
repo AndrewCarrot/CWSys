@@ -70,7 +70,7 @@ const AllClimbersComponent = () => {
 
         const data = await response.json();
         if(data.climber !== null)
-            navigate('/climber-profile',{state:data.climber.cardNumber});
+            navigate('/Profil',{state:{cardNumber:data.climber.cardNumber}});
 
     }
 
@@ -159,10 +159,10 @@ const AllClimbersComponent = () => {
     return(
         <div className="AllClimbersComponent">
 
-            {/* <Form
+            <Form
+                className='form'
                 layout="inline"
                 form={form}
-                style={{marginBottom: "20px"}}
                 onFinish={onFinish}
             >
 
@@ -181,6 +181,7 @@ const AllClimbersComponent = () => {
 
                 <Form.Item >
                     <Button
+                        className='button'
                         type="primary"
                         htmlType="submit"
                         style={{borderRadius:'2px'}}
@@ -188,14 +189,14 @@ const AllClimbersComponent = () => {
                         Szukaj
                     </Button>
                 </Form.Item>
-            </Form> */}
+            </Form>
 
             <Table
+                className='table'
                 dataSource={dataSource}
                 columns={columns} 
                 pagination={{ pageSize: 10 }} 
                 scroll={{ y: 600, x: 600 }}
-                style={{maxWidth: "80%"}}
             />
         </div>
     )
