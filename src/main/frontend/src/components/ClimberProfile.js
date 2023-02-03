@@ -7,15 +7,15 @@ import {
 } from '@ant-design/icons';
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
-import '../styles/ClimberProfileComponent.css'
-import PunchPassComponent from "./PunchPassComponent.js";
-import TimePassComponent from "./TimePassComponent.js"
-import AddPunchPassComponent from "./AddPunchPassComponent";
-import AddClassPassComponent from "./AddClassPassComponent";
-import AddTimePassComponent from './AddTimePassComponent'
-import ClassPassComponent from "./ClassPassComponent";
+import '../styles/ClimberProfile.css'
+import PunchPass from "./PunchPass.js";
+import TimePass from "./TimePass.js"
+import AddPunchPass from "./AddPunchPass";
+import AddClassPass from "./AddClassPass";
+import AddTimePass from './AddTimePass'
+import ClassPass from "./ClassPass";
 
-const ClimberProfileComponent = () => {
+const ClimberProfile = () => {
 
     const [climber, setClimber] = useState({
         cardNumber: '',
@@ -77,7 +77,7 @@ const ClimberProfileComponent = () => {
     }
 
     return (
-        <div className="ClimberProfileComponent">
+        <div className="ClimberProfile">
             <div className="top-badge">
                 <p><ContactsTwoTone /> {climber.firstName} {climber.lastName}</p>
                 <p><CreditCardTwoTone /> {climber.cardNumber}</p>
@@ -95,15 +95,15 @@ const ClimberProfileComponent = () => {
                 <p className="pass-badge">Karnety:</p>
                 <div className="buttons">
                     
-                    <AddPunchPassComponent climberId={climber.id} handleReload={handleReload}/>
-                    <AddTimePassComponent climberId={climber.id} handleReload={handleReload}/>
-                    <AddClassPassComponent climberId={climber.id} handleReload={handleReload}/>
+                    <AddPunchPass climberId={climber.id} handleReload={handleReload}/>
+                    <AddTimePass climberId={climber.id} handleReload={handleReload}/>
+                    <AddClassPass climberId={climber.id} handleReload={handleReload}/>
                    
                 </div>
                 <div className="pass-tables">
-                    { climber.punchPass && <PunchPassComponent pass={climber.punchPass} climberId={climber.id} handleReload={handleReload}/>}
-                    { climber.timePass && <TimePassComponent pass={climber.timePass} climberId={climber.id} handleReload={handleReload} /> }
-                    { climber.classPass && <ClassPassComponent pass={climber.classPass} climberId={climber.id} handleReload={handleReload} /> }
+                    { climber.punchPass && <PunchPass pass={climber.punchPass} climberId={climber.id} handleReload={handleReload}/>}
+                    { climber.timePass && <TimePass pass={climber.timePass} climberId={climber.id} handleReload={handleReload} /> }
+                    { climber.classPass && <ClassPass pass={climber.classPass} climberId={climber.id} handleReload={handleReload} /> }
                 </div>
             </div>
 
@@ -140,4 +140,4 @@ const ClimberProfileComponent = () => {
         </div>
     )
 }
-export default ClimberProfileComponent
+export default ClimberProfile

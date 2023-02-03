@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 
 
-const RouterTestComponent = () => {
+const RouterTest = () => {
     const navigate = useNavigate();
 
     const redirectTest = () => {
@@ -9,7 +9,7 @@ const RouterTestComponent = () => {
     }
 
     return(
-        <div className="RouterTestComponent">
+        <div className="RouterTest">
             <button onClick={redirectTest}>
                 test
             </button>
@@ -17,4 +17,4 @@ const RouterTestComponent = () => {
     )
 } 
 
-export default RouterTestComponent
+export default RouterTest

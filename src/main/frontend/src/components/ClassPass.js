@@ -1,14 +1,19 @@
-import { useState } from "react";
+import {Popconfirm, Space, Table, message, Modal, Input, Button} from "antd";
+import {
+    EditTwoTone,
+    MinusCircleFilled,
+    MinusSquareTwoTone,
+    PlusSquareTwoTone,
+    QuestionCircleOutlined
+} from "@ant-design/icons";
+import {useState} from "react";
 
-import {Button, Input, Modal, Popconfirm, Table, message} from "antd";
-import {EditTwoTone, MinusCircleFilled, QuestionCircleOutlined} from "@ant-design/icons";
-
-const TimePassComponent = (props) => {
+const ClassPass = (props) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [inputValue, setInputValue] = useState(null)
 
-    function getParsedDate(date) {
+    function getParsedDate(date){
 
         if (date) {
             let dd = date[2];
@@ -28,9 +33,40 @@ const TimePassComponent = (props) => {
     const validFrom = new Date(getParsedDate(props.pass.validFrom))
     const validTill = new Date(getParsedDate(props.pass.validTill))
     const daysLeft = Math.ceil((validTill.getTime()-validFrom.getTime()))/ (1000 * 3600 * 24)
-    
+
+
+    const handleAddPunch = async() => {
+        const response = await fetch(`http://localhost:8080/classPass/${props.climberId}/givePunch`, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+            if(response.ok){
+                props.handleReload()
+                message.success("Pomyślnie dodano wejście na sekcje !")
+            }else{
+                message.error("Coś poszło nie tak")
+            }
+    }
+
+    const handleTakePunch = async() => {
+        const response = await fetch(`http://localhost:8080/classPass/${props.climberId}/takePunch`, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+            if(response.ok){
+                props.handleReload()
+                message.success("Pomyślnie zdjęto wejście z karnetu !")
+            }else{
+                message.error("Coś poszło nie tak")
+            }
+    }
+
     const handleDelete = async() => {
-        const response = await fetch(`http://localhost:8080/timePass/${props.climberId}/delete`, {
+        const response = await fetch(`http://localhost:8080/classPass/${props.climberId}/delete`, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json'
@@ -44,31 +80,19 @@ const TimePassComponent = (props) => {
         }
     }
 
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
+    }
+
     const handleModalClose = () => {
         setIsModalOpen(false)
         setInputValue(null)
     }
 
-    const handlePassRenew = async() => {
-        const res = await fetch(`http://localhost:8080/timePass/${props.climberId}/renew`,{
-            method: 'PATCH',
-            headers: {
-                Accept: 'application/json'
-            }
-        });
-
-        if(res.ok){
-            message.success("Pomyślnie odnowiono karnet!")
-            handleModalClose()
-            props.handleReload()
-        }
-    }
-
-    /* Wydłużenie ważności karnetu */ 
+    /* Wydłużenie ważności karnetu */
     const handleModalConfirm = async() => {
-
         if(inputValue !== null) {
-            const res = await fetch(`http://localhost:8080/timePass/${props.climberId}/addDays?days=${inputValue}`, {
+            const res = await fetch(`http://localhost:8080/classPass/${props.climberId}/addDays?days=${inputValue}`, {
                 method: 'PATCH',
                 headers: {
                     Accept: 'application/json'
@@ -80,26 +104,41 @@ const TimePassComponent = (props) => {
                 handleModalClose()
                 props.handleReload()
             }else{
-                message.error("Coś poszło nie tak")
+                message("Coś poszło nie tak")
             }
         }else{
             message.error("Określ ilość dni")
         }
-        
     }
 
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value)
+    const handlePassRenew = async() => {
+        const res = await fetch(`http://localhost:8080/classPass/${props.climberId}/renew`,{
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json'
+            }
+        });
+
+        if(res.ok){
+            message.success("Pomyślne odnowiono karnet!")
+            handleModalClose()
+            props.handleReload()
+        }else{
+            message.error("Coś poszło nie tak")
+        }
     }
+
+
 
     const dataSource = [
         {
             key: '1',
-            type: "Czasowy",
+            type: "Sekcja",
             discount: props.pass.discount === true ? "ulgowy" : "normalny",
             validFrom: getParsedDate(props.pass.validFrom),
             validTill: getParsedDate(props.pass.validTill),
-            leftDays: daysLeft
+            leftDays: daysLeft,
+            punches: props.pass.punches
         }
     ];
 
@@ -129,12 +168,28 @@ const TimePassComponent = (props) => {
             dataIndex: 'leftDays',
             key: 'leftDays',
         },
+
         {
-          title:'Edycja',
-          dataIndex: 'edit',
-          render: (_,record)=>(
-              <a onClick={()=>setIsModalOpen(true)}><EditTwoTone style={{fontSize: 20}} /></a>
-          )
+            title: 'Pozostało wejść',
+            dataIndex: 'punches',
+            key: 'punches',
+        },
+        {
+            title: 'Wejście',
+            dataIndex: 'entrance',
+            render: (_, record) =>(
+                <Space size="middle">
+                    <a onClick={handleAddPunch} > <PlusSquareTwoTone style={{fontSize: 20}} />  </a>
+                    <a onClick={handleTakePunch} > <MinusSquareTwoTone style={{fontSize: 20}} /> </a>
+                </Space>
+            )
+        },
+        {
+            title:'Edycja',
+            dataIndex: 'edit',
+            render: (_,record)=>(
+                <a onClick={()=>setIsModalOpen(true)}><EditTwoTone style={{fontSize: 20}} /></a>
+            )
         },
         {
             title:'Usuń',
@@ -155,11 +210,13 @@ const TimePassComponent = (props) => {
                 </Popconfirm>
             )
         }
+
+
     ];
 
 
     return(
-        <div className="ClassPassComponent">
+        <div className="ClassPass">
             <Table 
                 dataSource={dataSource} 
                 columns={columns} 
@@ -189,7 +246,6 @@ const TimePassComponent = (props) => {
                         Przedłuż
                     </Button>
                 ]}
-                
             >
                 <Input
                     placeholder="wydłużenie dni"
@@ -202,4 +258,4 @@ const TimePassComponent = (props) => {
         </div>
     )
 }
-export default TimePassComponent
+export default ClassPass

@@ -7,11 +7,11 @@ import {
   RouterProvider,
   createBrowserRouter
 } from 'react-router-dom';
-import RouterTestComponent from './components/RouterTestComponent';
+import RouterTest from './components/RouterTest';
 import ReadPage from './components/ReadPage';
-import ClimberProfileComponent from './components/ClimberProfileComponent';
-import NewClimberComponent from './components/NewClimberComponent'
-import AllClimbersComponent from './components/AllClimbersComponent'
+import ClimberProfile from './components/ClimberProfile';
+import NewClimber from './components/NewClimber'
+import AllClimbers from './components/AllClimbers'
 
 const router = createBrowserRouter([
   {
@@ -25,23 +25,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/Sekcje",
-        element: <RouterTestComponent/>
+        element: <RouterTest/>
       },
       {
         path: "/Profil",
-        element: <ClimberProfileComponent/>
+        element: <ClimberProfile/>
       },
       {
         path: "/Nowy",
-        element: <NewClimberComponent/>
+        element: <NewClimber/>
       },
       {
         path: "/Lista",
-        element: <AllClimbersComponent/>
+        element: <AllClimbers/>
       },
       {
         path: "/Edycja",
-        element: <RouterTestComponent/>
+        element: <RouterTest/>
       }
     ]
   }

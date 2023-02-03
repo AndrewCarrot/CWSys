@@ -1,4 +1,4 @@
-import '../styles/NewClimberComponent.css'
+import '../styles/NewClimber.css'
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { useNavigate } from "react-router-dom"
 
@@ -8,7 +8,7 @@ const onFinishFailed = (errorInfo) => {
   message.error("Sprawdź poprawność danych")
 };
 
-const NewClimberComponent = () => {
+const NewClimber = () => {
     const navigate = useNavigate()
 
     const onFinish = async(values) => {
@@ -41,7 +41,7 @@ const NewClimberComponent = () => {
     };
 
     return (
-        <div className="NewClimberComponent">
+        <div className="NewClimber">
             <Form
                 name="basic"
                 labelCol={{
@@ -136,4 +136,4 @@ const NewClimberComponent = () => {
         </div>
     )
 }
-export default NewClimberComponent
+export default NewClimber

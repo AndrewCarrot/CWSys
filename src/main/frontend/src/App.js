@@ -19,7 +19,7 @@ import {
   UnorderedListOutlined,
   EditOutlined
 } from '@ant-design/icons';
-import RouterTestComponent from './components/RouterTestComponent';
+import RouterTestComponent from './components/RouterTest';
 const { Header, Content, Sider } = Layout;
 
 

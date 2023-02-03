@@ -1,11 +1,11 @@
 
-import '../styles/AllClimbersComponent.css'
+import '../styles/AllClimbers.css'
 import {useEffect, useState} from "react";
 import {Button, Form, Input, Popconfirm, Table} from "antd";
 import {CloseCircleFilled, QuestionCircleOutlined, SearchOutlined} from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 
-const AllClimbersComponent = () => {
+const AllClimbers = () => {
 
     const [climbers, setClimbers] = useState([{
         firstName:"",
@@ -157,7 +157,7 @@ const AllClimbersComponent = () => {
 
 
     return(
-        <div className="AllClimbersComponent">
+        <div className="AllClimbers">
 
             <Form
                 className='form'
@@ -201,4 +201,4 @@ const AllClimbersComponent = () => {
         </div>
     )
 }
-export default AllClimbersComponent
+export default AllClimbers

@@ -4,7 +4,7 @@ import {message, Popconfirm, Space, Table} from "antd";
 import {MinusCircleFilled, MinusSquareTwoTone, PlusSquareTwoTone, QuestionCircleOutlined} from "@ant-design/icons";
 
 
-const PunchPassComponent = (props) => {
+const PunchPass = (props) => {
 
 
   const handleAddPunch = async() => {
@@ -115,7 +115,7 @@ const handleDelete = async() => {
 
 
     return(
-        <div className="PunchPassComponent">
+        <div className="PunchPass">
             <Table 
               dataSource={dataSource}
               columns={columns} 
@@ -128,4 +128,4 @@ const handleDelete = async() => {
     )
 }
 
-export default PunchPassComponent
+export default PunchPass

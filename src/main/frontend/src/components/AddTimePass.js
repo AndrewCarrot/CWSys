@@ -1,4 +1,4 @@
-import '../styles/AddTimePassComponent.css'
+import '../styles/AddTimePass.css'
 import {Alert, Button, InputNumber, Modal, Select} from "antd";
 import {PlusCircleFilled} from "@ant-design/icons";
 import { useState } from 'react'
@@ -13,7 +13,7 @@ const typeSelectStyles = {
     float: "right"
 }
 
-const AddTimePassComponent = (props) => {
+const AddTimePass = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [timeSelect, setTimeSelect] = useState("")
     const [typeSelect, setTypeSelect] = useState("")
@@ -76,7 +76,7 @@ const AddTimePassComponent = (props) => {
     }
 
     return(
-        <div className="AddTimePassComponent">
+        <div className="AddTimePass">
             <Button type="primary" onClick={()=>setIsModalOpen(true)}>
                 <PlusCircleFilled /> Czasowy
             </Button>
@@ -120,4 +120,4 @@ const AddTimePassComponent = (props) => {
         </div>
     )
 }
-export default AddTimePassComponent
+export default AddTimePass

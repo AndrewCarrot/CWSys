@@ -1,4 +1,4 @@
-import '../styles/AddPunchPassComponent.css'
+import '../styles/AddPunchPass.css'
 
 import {Alert, Button, InputNumber, message, Modal, Select} from "antd";
 import {useState} from "react";
@@ -13,7 +13,7 @@ const selectStyles ={
     float: "right"
 }
 
-const AddPunchPassComponent = (props) => {
+const AddPunchPass = (props) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [inputNumber, setInputNumber] = useState(8)
@@ -68,7 +68,7 @@ const AddPunchPassComponent = (props) => {
 
 
     return (
-        <div className="AddPunchPassComponent">
+        <div className="AddPunchPass">
             <Button type="primary" onClick={() => setIsModalOpen(true)}>
                 <PlusCircleFilled /> Ilościowy
             </Button>
@@ -111,4 +111,4 @@ const AddPunchPassComponent = (props) => {
         </div>
     )
 }
-export default AddPunchPassComponent
+export default AddPunchPass

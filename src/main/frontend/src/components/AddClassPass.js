@@ -1,4 +1,4 @@
-import '../styles/AddClassPassComponent.css'
+import '../styles/AddClassPass.css'
 
 
 import {useState} from "react";
@@ -15,7 +15,7 @@ const typeSelectStyles = {
     float: "right"
 }
 
-const AddClassPassComponent = (props) => {
+const AddClassPass = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [frequencySelect, setFrequencySelect] = useState("")
     const [typeSelect, setTypeSelect] = useState("")
@@ -75,7 +75,7 @@ const AddClassPassComponent = (props) => {
     }
 
     return(
-        <div className="AddClassPassComponent">
+        <div className="AddClassPass">
             <Button type="primary" onClick={()=>setIsModalOpen(true)}>
                 <PlusCircleFilled /> Sekcja
             </Button>
@@ -120,4 +120,4 @@ const AddClassPassComponent = (props) => {
         </div>
     )
 }
-export default AddClassPassComponent
+export default AddClassPass
