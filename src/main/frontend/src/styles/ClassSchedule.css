@@ -1,0 +1,56 @@
+.ClassSchedule{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.schedule--container{
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ClassSchedule .ant-row{
+    width: 90%;
+    border-top: solid 1px #929dab;
+    border-bottom: solid 1px #929dab;
+    border-left: solid 1px #929dab;
+
+}
+
+.schedule--container .ant-card {
+   font-size: 0.9vw;
+}
+
+.calendar--icon{
+    font-size: 4.5vw;
+}
+
+.ClassSchedule .ant-col{
+    background-color: white;
+    border-right: solid 1px #929dab;
+}
+
+.schedule--div{
+    background-color: white;
+}
+
+.mobile{
+    display: none;
+}
+
+@media(max-width: 992px){
+    .schedule--container{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+}
+

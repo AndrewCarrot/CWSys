@@ -7,7 +7,7 @@ const SideBar = ({ menu }) => {
     return (
       <Layout.Sider
         className="sidebar"
-        breakpoint={"lg"}
+        breakpoint={"xl"}
         theme="light"
         collapsedWidth={0}
         trigger={null}

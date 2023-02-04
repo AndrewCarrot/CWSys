@@ -12,6 +12,8 @@ import ReadPage from './components/ReadPage';
 import ClimberProfile from './components/ClimberProfile';
 import NewClimber from './components/NewClimber'
 import AllClimbers from './components/AllClimbers'
+import ClassSchedule from './components/ClassSchedule';
+import ClassEdit from './components/ClassEdit'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Sekcje",
-        element: <RouterTest/>
+        element: <ClassSchedule/>
       },
       {
         path: "/Profil",
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Edycja",
-        element: <RouterTest/>
+        element: <ClassEdit/>
       }
     ]
   }

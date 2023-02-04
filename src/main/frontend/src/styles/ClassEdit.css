@@ -1,0 +1,23 @@
+.ClassEdit{
+    width: 90%;
+    
+}
+
+.class--edit--modal .ant-modal-body{
+    height: 175px;
+    padding: 10px 40px 10px 20px;
+}
+
+.class--edit--modal .ant-modal-body > * {
+    margin: 5px;
+}
+
+@media(max-width: 700px){
+    .ClassEdit{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

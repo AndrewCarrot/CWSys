@@ -51,6 +51,10 @@
     margin-bottom: 25px;
 }
 
+.edit--button--div{
+    width: 90%;
+}
+
 /* tablet */
 @media (min-width: 700px){
     .top-badge{
