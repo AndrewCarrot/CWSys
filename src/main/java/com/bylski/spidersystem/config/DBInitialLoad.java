@@ -4,6 +4,7 @@ import com.bylski.spidersystem.model.*;
 import com.bylski.spidersystem.repository.ClimberRepository;
 import com.bylski.spidersystem.repository.ClimbingGroupRepository;
 import com.bylski.spidersystem.repository.CustomPassRepository;
+import com.bylski.spidersystem.repository.UserRepository;
 import com.bylski.spidersystem.service.inf.TimePassService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -19,9 +20,15 @@ public class DBInitialLoad {
     public CommandLineRunner loadData(
             ClimberRepository climberRepository,
             ClimbingGroupRepository climbingGroupRepository,
-            CustomPassRepository customPassRepository
+            CustomPassRepository customPassRepository,
+            UserRepository userRepository
     ){
         return (args) -> {
+
+            userRepository.save(
+                    new User(1, "admin", "email@wp.pl", "$2a$12$ZUZDmU/JM2SXvGwbuKDX.O6m4KtifFsh37aD.7k2GW4Se/lROWLkO", Role.ADMIN)
+            );
+
             TimePass timePass = new TimePass(true,null, PassDuration.ONE_MONTH, LocalDate.now());
             ClassPass classPass = new ClassPass(true,"notatka",ClassFrequency.TWICE_PER_WEEK,LocalDate.now(),false);
             PunchPass punchPass = new PunchPass(8,true,"kolejna");
