@@ -7,13 +7,13 @@ import {
   RouterProvider,
   createBrowserRouter
 } from 'react-router-dom';
-import RouterTest from './components/RouterTest';
 import ReadPage from './components/ReadPage';
 import ClimberProfile from './components/ClimberProfile';
 import NewClimber from './components/NewClimber'
 import AllClimbers from './components/AllClimbers'
 import ClassSchedule from './components/ClassSchedule';
 import ClassEdit from './components/ClassEdit'
+import LoginPage from './components/LoginPage'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +46,10 @@ const router = createBrowserRouter([
         element: <ClassEdit/>
       }
     ]
+  },
+  {
+    path: "/Login",
+    element: <LoginPage />,
   }
 ]);
 

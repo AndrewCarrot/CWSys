@@ -20,6 +20,8 @@ import ClassPass from "./ClassPass";
 
 const ClimberProfile = () => {
 
+    const accesToken = window.localStorage.getItem('token')
+
     const [climber, setClimber] = useState({
         cardNumber: '',
         classPass:{},
@@ -53,7 +55,16 @@ const ClimberProfile = () => {
     const location = useLocation()
 
     useEffect(() => {
-        fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${location.state.cardNumber}`)
+        fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${location.state.cardNumber}`,{
+            method:'GET',
+            headers:{
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Origin':'*',
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ` + accesToken
+            }
+        })
         .then(async response =>{
             const data = await response.json();
             setClimber(data)

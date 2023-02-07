@@ -6,9 +6,20 @@ const { Search } = Input;
 const ReadPage = () => {
     const navigate = useNavigate();
 
-    // fajnie jakby tutaj tylko sprawdzać czy numer karty prowadzi do wspinacza ale nie ma takiego endpointu
+    const accesToken = window.localStorage.getItem('token')
+    console.log(accesToken)
+
     const onSearch = (value) => {
-        fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${value}`)
+        fetch(`http://localhost:8080/climbers/get/by-card-number?cardNumber=${value}`,{
+            method:'GET',
+            headers: {
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${accesToken}`
+            }
+        })
         .then(async response =>{
             const data = await response.json();
             
